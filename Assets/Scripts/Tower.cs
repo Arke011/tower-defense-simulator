@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
     private float turnSpeed = 10;
     private float fireRate = 1f;
     private float fireCountdown = 0f;
-    public GameObject bulletPref;
+    public GameObject bulletPrefab; // Change the variable name to bulletPrefab
     public Transform firePoint;
 
     void Start()
@@ -29,23 +29,22 @@ public class Tower : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-
         if (fireCountdown <= 0f)
         {
             Shoot();
             fireCountdown = 1f / fireRate;
         }
         fireCountdown -= Time.deltaTime;
+    }
 
-        void Shoot()
+    void Shoot()
+    {
+        GameObject bulletYAY = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Use bulletPrefab here
+        Bullet bullet = bulletYAY.GetComponent<Bullet>();
+
+        if (bullet != null)
         {
-            GameObject bulletYAY = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
-            bullet bullet = bulletYAY.GetComponent<Bullet>();
-
-            if (bullet != null)
-            {
-                bullet.Seek(target);
-            }
+            bullet.Seek(target);
         }
     }
 
