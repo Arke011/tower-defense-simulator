@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
     public float range = 15f;
     public Transform partToRotate;
     private float turnSpeed = 10;
-    private float fireRate = 1f;
+    private float fireRate = 2f;
     private float fireCountdown = 0f;
     public GameObject bulletPrefab; // Change the variable name to bulletPrefab
     public Transform firePoint;
