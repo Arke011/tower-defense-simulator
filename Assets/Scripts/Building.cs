@@ -10,6 +10,16 @@ public class Building : MonoBehaviour
 
     private Renderer renderer;
 
+    private GameObject tower;
+
+    public Vector3 offset;
+
+    void Start()
+    {
+        renderer = GetComponent<Renderer>();
+        defaultColor = renderer.material.color;
+    }
+
     void OnMouseEnter()
     {
         renderer.material.color = mouseENTER;
@@ -18,6 +28,18 @@ public class Building : MonoBehaviour
     void OnMouseExit()
     {
         renderer.material.color = defaultColor;
+    }
+
+    void OnMouseDown()
+    {
+        if (tower != null)
+        {
+            Debug.Log("clear visible lack of pure skill");
+            return;
+        }
+
+        GameObject towerToBuild = GameManager.instance.GETtowerNeeded();
+        tower = (GameObject)Instantiate(towerToBuild, transform.position + offset, transform.rotation);
     }
 
 }
