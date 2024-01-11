@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
     private float turnSpeed = 10f;
     private float fireRate = 2f;
     private float fireCountdown = 0f;
-    public GameObject bulletPrefab; // Change the variable name to bulletPrefab
+    public GameObject bulletPrefab; 
     public Transform firePoint;
 
     void Start()
@@ -39,7 +39,7 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletYAY = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Use bulletPrefab here
+        GameObject bulletYAY = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletYAY.GetComponent<Bullet>();
 
         if (bullet != null)
