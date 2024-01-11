@@ -75,7 +75,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected() //sita naudoju kad matyciau koks towerio range :)))))
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
