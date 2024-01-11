@@ -7,7 +7,7 @@ public class Tower : MonoBehaviour
     private Transform target;
     public float range = 15f;
     public Transform partToRotate;
-    private float turnSpeed = 10;
+    private float turnSpeed = 10f;
     private float fireRate = 2f;
     private float fireCountdown = 0f;
     public GameObject bulletPrefab; // Change the variable name to bulletPrefab
@@ -24,7 +24,7 @@ public class Tower : MonoBehaviour
         {
             return;
         }
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = target.position - transform.position; //situ eiluciu pats nelabai suprantu bet jos randa kuria dali towerio reikia pasukti norint nusitaikyti i enemy.
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
